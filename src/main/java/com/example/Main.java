@@ -38,7 +38,7 @@ public class Main {
             do {
                 
                 if(!presente){
-                    System.out.println("Scrivere la nota (scrivere exit per uscire, visualizza per vedere tutte le note,cancella per eliminare una nota e condivisibile per aggiungere una nota per tutti)");
+                    System.out.println("Scrivere la nota (scrivere -exit- per uscire, -visualizza- per vedere tutte le note, -condivise- per quelle condivise con tutti (con & davanti per aggiungerne una condivisibile),-cancella- per eliminare una nota)");
 
                     nota = sc.nextLine();
 
@@ -47,6 +47,15 @@ public class Main {
                     }
                     else if(nota.equals("visualizza")){
                         out.writeBytes("?" + "\n");
+
+                        do {
+                            fraseServer =  in.readLine();
+                            System.out.println(fraseServer);
+                            
+                        } while (!fraseServer.equals("@"));
+                    }
+                    else if(nota.equals("condivise")){
+                        out.writeBytes("&" + "\n");
 
                         do {
                             fraseServer =  in.readLine();
@@ -66,11 +75,12 @@ public class Main {
                         String strCancella = sc.nextLine();
                         out.writeBytes(strCancella + "\n");
                         String trovatoCanc = in.readLine();
-                        if(trovatoCanc.equals("n")){
-                            System.out.println("stringa non trovata");
+                        System.out.println(trovatoCanc);
+                        if(trovatoCanc.equals("s")){
+                            System.out.println("stringa eliminata");
                         }
                         else{
-                            System.out.println("stringa eliminata");
+                            System.out.println("stringa non trovata");
                         }
                     }
                     else{
